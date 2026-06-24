@@ -141,7 +141,7 @@ b,strong{color:var(--ink);font-weight:700;}
 .cta{font-size:30px;color:var(--accent);font-weight:700;letter-spacing:3px;margin-top:26px;}
 
 /* 講師白板 */
-.wb-btn{position:fixed;top:14px;right:18px;z-index:1100;display:none;
+.wb-btn{position:fixed;top:14px;right:18px;z-index:1100;display:block;
   background:var(--accent);color:#fff;border:none;border-radius:22px;padding:8px 16px;
   font-family:'Noto Sans TC';font-size:14px;cursor:pointer;letter-spacing:1px;box-shadow:0 4px 12px rgba(0,0,0,.15);}
 body.teacher-mode .wb-btn{display:block;}
@@ -196,6 +196,17 @@ body.teacher-mode .wb-btn{display:block;}
 .vwrap .corner{position:absolute;top:12px;left:12px;z-index:3;
   font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:#fff;
   background:rgba(58,42,26,.62);backdrop-filter:blur(3px);padding:4px 12px;border-radius:14px;}
+
+/* === 第4頁總覽緊湊化（防溢出） === */
+.overview .kicker{margin-bottom:10px;}
+.overview h2{margin-bottom:14px !important;font-size:clamp(24px,3vw,38px);}
+.overview .grid{gap:13px;}
+.overview .card{padding:14px 18px;border-radius:13px;}
+.overview .card .no{font-size:12px;}
+.overview .card h3{font-size:clamp(18px,2vw,22px);margin:4px 0 6px;}
+.overview .card p{font-size:clamp(13px,1.6vw,16px);line-height:1.45;}
+@media (max-width:820px){ .overview .grid{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:520px){ .overview .grid{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
@@ -204,7 +215,7 @@ body.teacher-mode .wb-btn{display:block;}
 <div id="pageInfo">01 / 12</div>
 <div id="hint">← → 切頁 · F 全螢幕 · 點兩側翻頁</div>
 
-<button class="wb-btn" onclick="toggleWB()">✎ 白板</button>
+<button class="wb-btn" onclick="toggleWB()">✎ 講師筆記</button>
 <div class="side-wb" id="sideWB">
   <h4>講師白板（自動儲存）</h4>
   <div class="side-wb-area" contenteditable="true" id="wbArea"></div>
@@ -242,19 +253,19 @@ body.teacher-mode .wb-btn{display:block;}
 
 <!-- 4 總覽 九相 -->
 <section class="slide" data-slide="4" data-section="維持注意">
-  <div class="slide-inner">
+  <div class="slide-inner overview">
     <div class="kicker">總覽 · 一觀九相</div>
     <h2 style="margin-bottom:24px;">觀音色身　莊嚴次第</h2>
     <div class="grid g3">
-      <div class="card"><div class="no">相 一</div><h3>身量圓光</h3><p>身紫金色，頂有肉髻，項有圓光，面各百千由旬。</p></div>
-      <div class="card"><div class="no">相 二</div><h3>五百化佛</h3><p>圓光中有五百化佛如釋迦，各有五百菩薩、無量諸天侍。</p></div>
-      <div class="card"><div class="no">相 三</div><h3>頂上天冠</h3><p>毘楞伽摩尼妙寶為天冠，冠中有一立化佛。</p></div>
-      <div class="card"><div class="no">相 四</div><h3>眉間毫相</h3><p>面如閻浮檀金，毫相備七寶色，流出八萬四千光。</p></div>
-      <div class="card"><div class="no">相 五</div><h3>寶臂瓔珞</h3><p>臂如紅蓮，八十億光為瓔珞，普現一切莊嚴事。</p></div>
-      <div class="card"><div class="no">相 六</div><h3>手掌指畫</h3><p>掌作五百億蓮華色，十指端各八萬四千畫如印文。</p></div>
-      <div class="card"><div class="no">相 七</div><h3>寶手接引</h3><p>光柔軟普照一切，以此寶手接引眾生。</p></div>
-      <div class="card"><div class="no">相 八</div><h3>舉足下足</h3><p>足下千輻輪化光明臺，下足散金剛摩尼花彌滿。</p></div>
-      <div class="card"><div class="no">相 九</div><h3>唯二不及</h3><p>眾相如佛無異，唯肉髻、無見頂相不及世尊。</p></div>
+      <div class="card"><div class="no">相 一</div><h3>身量圓光</h3><p>身紫金色，頂有肉髻，項有圓光</p></div>
+      <div class="card"><div class="no">相 二</div><h3>五百化佛</h3><p>圓光中五百化佛，皆如釋迦</p></div>
+      <div class="card"><div class="no">相 三</div><h3>頂上天冠</h3><p>摩尼妙寶天冠，冠中一立化佛</p></div>
+      <div class="card"><div class="no">相 四</div><h3>眉間毫相</h3><p>面金色，毫相七寶，放八萬四千光</p></div>
+      <div class="card"><div class="no">相 五</div><h3>寶臂瓔珞</h3><p>臂如紅蓮，八十億光為瓔珞</p></div>
+      <div class="card"><div class="no">相 六</div><h3>手掌指畫</h3><p>掌五百億蓮色，指端八萬四千畫</p></div>
+      <div class="card"><div class="no">相 七</div><h3>寶手接引</h3><p>光柔軟普照，寶手接引眾生</p></div>
+      <div class="card"><div class="no">相 八</div><h3>舉足下足</h3><p>足下千輻輪，化五百億光明臺</p></div>
+      <div class="card"><div class="no">相 九</div><h3>唯二不及</h3><p>眾相如佛，唯肉髻頂相不及世尊</p></div>
     </div>
   </div>
 </section>
