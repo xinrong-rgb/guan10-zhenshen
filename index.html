@@ -141,13 +141,15 @@ b,strong{color:var(--ink);font-weight:700;}
 .cta{font-size:30px;color:var(--accent);font-weight:700;letter-spacing:3px;margin-top:26px;}
 
 /* 講師白板 */
-.wb-btn{position:fixed;top:14px;right:18px;z-index:1100;display:block;
+.wb-btn{position:fixed;top:14px;right:18px;z-index:1100;display:none;
   background:var(--accent);color:#fff;border:none;border-radius:22px;padding:8px 16px;
   font-family:'Noto Sans TC';font-size:14px;cursor:pointer;letter-spacing:1px;box-shadow:0 4px 12px rgba(0,0,0,.15);}
 body.teacher-mode .wb-btn{display:block;}
-.side-wb{position:fixed;top:0;right:-380px;width:360px;height:100%;background:#fffaf0;
+body.teacher-mode .side-wb{display:flex;}
+body.teacher-mode .wb-btn{display:block;}
+.side-wb{display:none;position:fixed;top:0;right:-380px;width:360px;height:100%;background:#fffaf0;
   border-left:2px solid var(--accent);z-index:1090;transition:right .35s ease;
-  box-shadow:-8px 0 30px rgba(0,0,0,.12);display:flex;flex-direction:column;padding:60px 20px 20px;}
+  box-shadow:-8px 0 30px rgba(0,0,0,.12);flex-direction:column;padding:60px 20px 20px;}
 .side-wb.open{right:0;}
 .side-wb h4{font-family:'Noto Sans TC';font-size:15px;color:var(--accent);letter-spacing:2px;margin-bottom:10px;}
 .side-wb-area{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;
