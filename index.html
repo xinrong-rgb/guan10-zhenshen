@@ -207,7 +207,23 @@ body.teacher-mode .wb-btn{display:block;}
 .overview .card p{font-size:clamp(13px,1.6vw,16px);line-height:1.45;}
 @media (max-width:820px){ .overview .grid{grid-template-columns:repeat(2,1fr);} }
 @media (max-width:520px){ .overview .grid{grid-template-columns:1fr;} }
+
+/* === 阿含經風補充：對比表 + 圖表 === */
+.ctable{width:100%;border-collapse:collapse;margin-top:6px;}
+.ctable th,.ctable td{padding:12px 18px;text-align:left;border-bottom:1px solid var(--line);}
+.ctable th{font-weight:700;background:var(--panel);font-size:clamp(16px,1.9vw,21px);color:var(--ink);}
+.ctable th:first-child{width:20%;font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--ink-3);letter-spacing:1px;}
+.ctable th.col-n{color:var(--accent);}
+.ctable th.col-s{color:var(--accent-2);}
+.ctable td{font-size:clamp(15px,1.8vw,20px);color:var(--ink-2);line-height:1.5;}
+.ctable td:first-child{font-family:'Noto Serif TC';font-weight:700;color:var(--ink);font-size:clamp(16px,1.9vw,21px);}
+.ctable td.num{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:clamp(13px,1.7vw,18px);}
+.ctable tbody tr:hover td{background:rgba(184,138,44,.05);}
+.chart-wrap{height:clamp(300px,50vh,440px);position:relative;margin-top:4px;}
+.chart-note{margin-top:14px;text-align:center;font-size:clamp(15px,1.8vw,21px);color:var(--ink-2);line-height:1.65;}
+@media (max-width:820px){ .ctable th:first-child{width:auto;} .ctable th,.ctable td{padding:9px 10px;} }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
 <div id="progress"></div>
@@ -365,8 +381,37 @@ body.teacher-mode .wb-btn{display:block;}
   </div>
 </section>
 
-<!-- 10 唯二不及 -->
+<!-- 10 數字莊嚴 對比表 -->
 <section class="slide" data-slide="10" data-section="維持注意">
+  <div class="slide-inner">
+    <div class="kicker">表法 · 以數顯無量</div>
+    <h2 style="margin-bottom:16px;">相好數字　皆表無量</h2>
+    <table class="ctable">
+      <thead><tr><th>相</th><th class="col-n">數量莊嚴</th><th class="col-s">表法之義</th></tr></thead>
+      <tbody>
+        <tr><td>身量</td><td class="num">八十億那由他恒河沙由旬</td><td>法身周遍，量同法界</td></tr>
+        <tr><td>圓光化佛</td><td class="num">五百化佛 · 各五百菩薩</td><td>一中現多，主伴無盡</td></tr>
+        <tr><td>眉間毫相</td><td class="num">八萬四千 種光明</td><td>對治八萬四千塵勞</td></tr>
+        <tr><td>寶臂瓔珞</td><td class="num">八十億 微妙光明</td><td>莊嚴即是度生資具</td></tr>
+        <tr><td>手掌指端</td><td class="num">八萬四千 畫·色·光</td><td>一一相中，重重無盡</td></tr>
+        <tr><td>舉足下足</td><td class="num">五百億 光明臺</td><td>行住舉止皆度眾生</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 11 重重無盡 Chart -->
+<section class="slide" data-slide="11" data-section="維持注意">
+  <div class="slide-inner">
+    <div class="kicker">圖看趨勢 · 重重無盡</div>
+    <h2 style="margin-bottom:8px;">一畫之中　重重無盡</h2>
+    <div class="chart-wrap"><canvas id="chartWuJin"></canvas></div>
+    <p class="chart-note">手十指端，一一指端有 <span class="accent">八萬四千畫</span>；一一畫 <span class="accent">八萬四千色</span>；一一色 <span class="accent">八萬四千光</span>。<br>由一至無量，層層相乘 ── 即華嚴 <span class="accent">「重重無盡」</span> 之境。</p>
+  </div>
+</section>
+
+<!-- 10 唯二不及 -->
+<section class="slide" data-slide="12" data-section="維持注意">
   <div class="slide-inner thesis">
     <div class="kicker">相九 · 等同於佛　唯餘二相</div>
     <h2 style="margin-bottom:8px;">其餘身相，<span class="accent">眾好具足，如佛無異</span></h2>
@@ -379,7 +424,7 @@ body.teacher-mode .wb-btn{display:block;}
 </section>
 
 <!-- 11 功德 -->
-<section class="slide" data-slide="11" data-section="喚起行動">
+<section class="slide" data-slide="13" data-section="喚起行動">
   <div class="slide-inner">
     <div class="kicker">佛告阿難 · 觀法功德</div>
     <h2 style="margin-bottom:24px;">作是觀者　所得利益</h2>
@@ -398,7 +443,7 @@ body.teacher-mode .wb-btn{display:block;}
 </section>
 
 <!-- 12 正觀次第 -->
-<section class="slide" data-slide="12" data-section="喚起行動">
+<section class="slide" data-slide="14" data-section="喚起行動">
   <div class="slide-inner">
     <div class="kicker">收攝 · 正觀次第</div>
     <h2 style="margin-bottom:22px;">若欲觀者　當依此序</h2>
@@ -437,12 +482,32 @@ slides.forEach((s,i)=>{
 });
 const dotBtns=[...dots.children];
 
+function renderChart(){
+  const ctx=document.getElementById('chartWuJin');
+  if(!ctx||!window.Chart)return;
+  new Chart(ctx,{type:'bar',
+    data:{labels:['一畫','八萬四千色','八萬四千光（色×色）'],
+      datasets:[{data:[1,84000,7056000000],
+        backgroundColor:['#d8c191','#c9a227','#b8842c'],borderRadius:8,barThickness:48}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},
+        tooltip:{callbacks:{label:c=>' '+c.parsed.x.toLocaleString()}}},
+      scales:{
+        x:{type:'logarithmic',grid:{color:'rgba(154,133,104,.18)'},
+           ticks:{color:'#6a543c',font:{size:14,family:'JetBrains Mono'}},
+           title:{display:true,text:'數量（對數刻度）',color:'#9a8568',font:{size:14}}},
+        y:{grid:{display:false},
+           ticks:{color:'#3a2a1a',font:{size:18,family:'Noto Serif TC',weight:'700'}}}}}});
+}
+let chartDone=false;
+function maybeChart(){ if(!chartDone&&slides[cur].querySelector('#chartWuJin')){renderChart();chartDone=true;} }
 function go(i){
   if(i<0||i>=total)return;
   slides[cur].classList.remove('active');
   cur=i;
   slides[cur].classList.add('active');
   update();
+  maybeChart();
 }
 function next(){go(cur+1);}
 function prev(){go(cur-1);}
@@ -499,6 +564,7 @@ document.addEventListener('click',e=>{
 });
 
 update();
+maybeChart();
 </script>
 </body>
 </html>
